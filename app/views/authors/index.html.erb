@@ -5,6 +5,7 @@
 	<li>
 		<%= link_to "#{author.fullname}", author_path(id: author.id) %>
 		<%= link_to "edit", edit_author_path(id: author.id) %>
+		<%= link_to "delete", author_path(id: author.id), method: :delete %>
 	</li>
 	<% end %>
 </ul>
