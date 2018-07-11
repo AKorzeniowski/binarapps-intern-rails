@@ -5,8 +5,8 @@
 	<%= f.label :content %>
 	<%= f.text_area :content %>
 	<hr>
-	<%= f.label :author_id %>
-	<%= f.text_field :author_id %>
+	<%= f.label "Author" %>
+	<%= f.collection_select(:author_id, Author.all, :id, :fullname) %>
 	<hr>
 	<%= f.submit 'Save' %>
 <% end %>
