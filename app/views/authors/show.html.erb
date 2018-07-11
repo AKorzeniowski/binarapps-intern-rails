@@ -9,6 +9,13 @@
 	<hr>
 	Age:
 	<%= "#{@author.age}" %>
+	<hr>
+	Posts:
+	<ul>
+		<% @author.posts.each do |post| %>
+			<li><%= link_to post.title, post_path(id: post.id) %></li>
+		<% end %>
+	</ul>
 </p>
 
 <%= link_to 'Back to authors', authors_path %>

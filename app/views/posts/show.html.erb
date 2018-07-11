@@ -5,7 +5,7 @@
 	<%= "#{@post.content}" %>
 	<hr>
 	Author:
-	<%= "#{@post.author_id}" %>
+	<%= link_to "#{Author.find(@post.author_id).fullname}", author_path(Author.find(@post.author_id).id) %>
 	<hr>
 	Created at:
 	<%= "#{@post.created_at}" %>
