@@ -1,0 +1,17 @@
+<h1><%= "#{@post.title}" %></h1>
+<hr>
+<p>
+	Content:
+	<%= "#{@post.content}" %>
+	<hr>
+	Author:
+	<%= "#{@post.author_id}" %>
+	<hr>
+	Created at:
+	<%= "#{@post.created_at}" %>
+    <hr>
+	Updated at:
+	<%= "#{@post.updated_at}" %>
+</p>
+
+<%= link_to 'Back to authors', authors_path %>
