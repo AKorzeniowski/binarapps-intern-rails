@@ -18,4 +18,6 @@
 	</ul>
 </p>
 
+<%= link_to "Edit this author", edit_author_path(id: @author.id) %> | 
+<%= link_to "Delete this author", author_path(id: @author.id), method: :delete, data: { confirm: 'Are you sure?' } %> | 
 <%= link_to 'Back to authors', authors_path %>
