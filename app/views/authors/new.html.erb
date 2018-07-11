@@ -1,0 +1,11 @@
+<h1>Add new author</h1>
+
+<% if @author.errors.any? %>
+<ul>
+	<% @author.errors.full_messages.each do |msg| %>
+		<li><%= msg %></li>
+	<% end %>
+</ul>
+<% end %>
+
+<%= render 'form' %>

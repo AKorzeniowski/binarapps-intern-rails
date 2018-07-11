@@ -4,6 +4,7 @@
 	<% @authors.each do |author| %>
 	<li>
 		<%= link_to "#{author.fullname}", author_path(id: author.id) %>
+		<%= link_to "edit", edit_author_path(id: author.id) %>
 	</li>
 	<% end %>
 </ul>
