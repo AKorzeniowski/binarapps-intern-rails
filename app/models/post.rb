@@ -6,9 +6,10 @@ class Post < ActiveRecord::Base
 
   scope :old, -> { where('created_at < ?', 40.minutes.ago) }
 
+  belongs_to :author
   has_many :comments
-  has_many :author_posts
-  has_many :authors, through: :author_posts
+  # has_many :author_posts
+  # has_many :authors, through: :author_posts
   # before_create :annotate_author
 
   # def annotate_author
