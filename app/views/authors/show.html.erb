@@ -1,0 +1,14 @@
+<h1><%= "#{@author.fullname}" %></h1>
+<hr>
+<p>
+	Name:
+	<%= "#{@author.name}" %>
+	<hr>
+	Surname:
+	<%= "#{@author.surname}" %>
+	<hr>
+	Age:
+	<%= "#{@author.age}" %>
+</p>
+
+<%= link_to 'Back to authors', authors_path %>
