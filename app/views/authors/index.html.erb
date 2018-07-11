@@ -5,7 +5,7 @@
 	<li>
 		<%= link_to "#{author.fullname}", author_path(id: author.id) %>
 		<%= link_to "edit", edit_author_path(id: author.id) %>
-		<%= link_to "delete", author_path(id: author.id), method: :delete %>
+		<%= link_to "delete", author_path(id: author.id), method: :delete, data: { confirm: 'Are you sure?' } %>
 	</li>
 	<% end %>
 </ul>
