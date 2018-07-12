@@ -13,8 +13,8 @@ RSpec.describe Author, type: :model do
   end
 
   describe 'scopes' do
-    let (:author1) { Author.create(name: 'test', surname: 'test', age: 20) }
-    let (:author2) { Author.create(name: 'test', surname: 'test', age: 55) }
+    let (:author1) { create(:author, age: 20) }
+    let (:author2) { create(:author, age: 55) }
 
     it 'should have old scope' do
       expect(Author.old).to include(author2)
@@ -23,7 +23,7 @@ RSpec.describe Author, type: :model do
   end
 
   describe 'callbacks' do
-    let (:author) { Author.create(name: 'test', surname: 'test') }
+    let (:author) { create(:author, age: nil) }
     it 'should set age to 25 if none was given' do
       expect(author.age).to eq(25)
     end
@@ -34,9 +34,9 @@ RSpec.describe Author, type: :model do
   end
 
   describe '#fullname' do
-    let (:author) { Author.create(name: 'Autor', surname: 'Testowy') }
+    let (:author) { create(:author) }
     it 'shoud have a working #fullname method' do
-      expect(author.fullname).to eq('Autor Testowy')
+      expect(author.fullname).to eq('Andrzej Tester')
     end
   end
 end
