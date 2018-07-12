@@ -1,9 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  before(:all) do
-    @author = Author.create(name: 'test', surname: 'test')
-  end
+  let(:author) { Author.create(name: 'test', surname: 'test') }
 
   describe 'validations' do
     it { should validate_presence_of(:title) }
@@ -16,12 +14,17 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe 'scopes' do
-    it 'should have old scope' do
-      post1 = Post.create(title: 'Pierwszy post', content: 'Testowy content', author_id: @author.id)
-      Timecop.freeze(Time.now + 1.hour)
-      post2 = Post.create(title: 'Drugi post', content: 'Testowy content', author_id: @author.id)
+  describe 'scopes' do      
+    let(:post1) { Post.create(title: 'Pierwszy post', content: 'Testowy content', author_id: author.id) }
+    let(:post2) { Post.create(title: 'Drugi post', content: 'Testowy content', author_id: author.id) }
 
+    before do
+      Timecop.freeze(Time.now - 1.hour)
+      post1
+      Timecop.return
+    end
+
+    it 'should have old scope' do
       expect(Post.old).to include(post1)
       expect(Post.old).not_to include(post2)
     end
