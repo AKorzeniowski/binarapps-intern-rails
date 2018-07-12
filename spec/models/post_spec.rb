@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  let(:author) { Author.create(name: 'test', surname: 'test') }
+  let(:author) { create(:author) }
 
   describe 'validations' do
     it { should validate_presence_of(:title) }
@@ -15,8 +15,8 @@ RSpec.describe Post, type: :model do
   end
 
   describe 'scopes' do      
-    let(:post1) { Post.create(title: 'Pierwszy post', content: 'Testowy content', author_id: author.id) }
-    let(:post2) { Post.create(title: 'Drugi post', content: 'Testowy content', author_id: author.id) }
+    let(:post1) { create(:post) }
+    let(:post2) { create(:post, title: 'Drugi post') }
 
     before do
       Timecop.freeze(Time.now - 1.hour)
