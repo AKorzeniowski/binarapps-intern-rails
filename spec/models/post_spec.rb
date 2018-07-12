@@ -16,7 +16,7 @@ RSpec.describe Post, type: :model do
 
   describe 'scopes' do      
     let(:post1) { create(:post) }
-    let(:post2) { create(:post, title: 'Drugi post') }
+    let(:post2) { create(:post) }
 
     before do
       Timecop.freeze(Time.now - 1.hour)

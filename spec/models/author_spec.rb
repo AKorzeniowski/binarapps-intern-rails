@@ -36,7 +36,7 @@ RSpec.describe Author, type: :model do
   describe '#fullname' do
     let (:author) { create(:author) }
     it 'shoud have a working #fullname method' do
-      expect(author.fullname).to eq('Andrzej Tester')
+      expect(author.fullname).to eq(author.name + ' ' + author.surname)
     end
   end
 end
