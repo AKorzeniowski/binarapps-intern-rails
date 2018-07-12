@@ -20,10 +20,10 @@ RSpec.describe Post, type: :model do
     long_content = ''
     512.times { long_content << 'x' }
 
-    expect(Post.new(title: 'Testowy tytuł', content: 'Too short')).not_to be_valid
-    expect(Post.new(title: 'Testowy tytuł', content: long_content)).not_to be_valid
+    expect(Post.new(title: 'Testowy tytuł', content: 'Too short', author_id: @author.id)).not_to be_valid
+    expect(Post.new(title: 'Testowy tytuł', content: long_content, author_id: @author.id)).not_to be_valid
 
-    expect(Post.new(title: 'Testowy tytuł', content: 'Prawidłowy content')).to be_valid
+    expect(Post.new(title: 'Testowy tytuł', content: 'Prawidłowy content', author_id: @author.id)).to be_valid
   end
 
   it 'should have one author' do
