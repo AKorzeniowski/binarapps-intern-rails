@@ -1,0 +1,10 @@
+<%= form_for @comment do |f| %>
+	<%= f.label :commenter_name %>
+	<%= f.text_field :commenter_name %>
+	<hr>
+	<%= f.label :content %>
+	<%= f.text_area :content %>
+	<hr>
+	<%= f.hidden_field(:post_id, value: @post.id) %>
+	<%= f.submit 'Add a comment' %>
+<% end %>

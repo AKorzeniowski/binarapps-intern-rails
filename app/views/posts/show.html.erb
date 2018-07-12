@@ -13,6 +13,8 @@
 	Updated at:
 	<%= "#{@post.updated_at}" %>
 </p>
+<h2>Add a comment</h2>
+<%= render 'comments/form' %>
 
 <%= link_to "Edit this post", edit_post_path(id: @post.id) %> | 
 <%= link_to "Delete this post", post_path(id: @post.id), method: :delete, data: { confirm: 'Are you sure?' } %> | 
