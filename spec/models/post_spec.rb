@@ -26,7 +26,16 @@ RSpec.describe Post, type: :model do
     expect(Post.new(title: 'Testowy tytuł', content: 'Prawidłowy content', author_id: @author.id)).to be_valid
   end
 
-  it 'should have one author' do
+  it 'should have old scope' do
+    post1 = Post.create(title: 'Pierwszy post', content: 'Testowy content', author_id: @author.id)
+    Timecop.freeze(Time.now + 1.hour)
+    post2 = Post.create(title: 'Drugi post', content: 'Testowy content', author_id: @author.id)
+
+    expect(Post.old).to include(post1)
+    expect(Post.old).not_to include(post2)
+  end
+
+  it 'belong to an author' do
     t = Post.reflect_on_association(:author)
     expect(t.macro).to eq(:belongs_to)
   end
