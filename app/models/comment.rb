@@ -4,4 +4,8 @@ class Comment < ActiveRecord::Base
   validates :content, length: 5..128
 
   belongs_to :post
+
+  def self.find_for_post(post)
+    Comment.where(post_id: post.id)
+  end
 end
