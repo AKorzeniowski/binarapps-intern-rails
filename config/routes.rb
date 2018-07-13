@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :authors
   resources :posts
+  resources :comments, only: [:create]
   # get '/authors', to: 'authors#index', as: :authors
   # get '/authors/:id', to: 'authors#show', as: :author
   # get '/author/new', to: 'authors#new', as: :new_author
