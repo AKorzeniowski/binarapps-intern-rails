@@ -1,12 +1,17 @@
 <%= form_for @author do |f| %>
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-	<hr>
-	<%= f.label :surname %>
-	<%= f.text_field :surname %>
-	<hr>
-	<%= f.label :age %>
-	<%= f.text_field :age %>
-	<hr>
-	<%= f.submit 'Save' %>
+  	<div class="form-group">
+		<%= f.label :name, class: "form-control" %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="form-group">
+		<%= f.label :surname, class: "form-control"  %>
+		<%= f.text_field :surname %>
+	</div>
+	<div class="form-group">
+		<%= f.label :age, class: "form-control"  %>
+		<%= f.text_field :age %>
+	</div>
+	<div class="form-group">
+		<%= f.submit 'Save' %>
+	</div>
 <% end %>

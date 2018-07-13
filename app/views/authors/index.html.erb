@@ -1,6 +1,6 @@
 <h1>List of all authors</h1>
 
-<div class="container">
+<div class="container authors">
 	<% @authors.each do |author| %>
 	<div class="row">
 		<div class="col-sm-12 col-md-8"><%= link_to "#{author.fullname}", author_path(id: author.id) %></div>
@@ -10,5 +10,22 @@
 	<% end %>
 </div>
 
+<%= form_for @author, remote: true do |f| %>
+  	<div class="form-group">
+		<%= f.label :name, class: "form-control" %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="form-group">
+		<%= f.label :surname, class: "form-control"  %>
+		<%= f.text_field :surname %>
+	</div>
+	<div class="form-group">
+		<%= f.label :age, class: "form-control"  %>
+		<%= f.number_field :age %>
+	</div>
+	<div class="form-group">
+		<%= f.submit 'Save' %>
+	</div>
+<% end %>
 <hr>
 <%= link_to "Add new author", new_author_path %>
