@@ -1,14 +1,14 @@
 <h1>List of all authors</h1>
 
-<ul>
+<div class="container">
 	<% @authors.each do |author| %>
-	<li>
-		<%= link_to "#{author.fullname}", author_path(id: author.id) %>
-		<%= link_to "edit", edit_author_path(id: author.id) %>
-		<%= link_to "delete", author_path(id: author.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-	</li>
+	<div class="row">
+		<div class="col-sm-12 col-md-8"><%= link_to "#{author.fullname}", author_path(id: author.id) %></div>
+		<div class="col-sm-12 col-md-2"><%= link_to "edit", edit_author_path(id: author.id) %></div>
+		<div class="col-sm-12 col-md-2"><%= link_to "delete", author_path(id: author.id), method: :delete, data: { confirm: 'Are you sure?' } %></div>
+	</div>
 	<% end %>
-</ul>
+</div>
 
 <hr>
 <%= link_to "Add new author", new_author_path %>
