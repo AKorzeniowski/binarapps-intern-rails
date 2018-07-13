@@ -1,1 +1,7 @@
-$('.authors').append('<%= escape_javascript render 'author', author: @author %>')
+<% if @author.persisted? %>
+  $('.authors').append('<%= escape_javascript render('author', author: @author) %>');
+<% else %>  
+  alert('Ogaaarnij się!');
+  alert('<%= j @author.errors.full_messages.join(', ') %>');
+<% end %>
+$('.new_author').find('input[type="text"], input[type="number"]').val('')
