@@ -1,7 +1,11 @@
 <% if alert %>
-	Alert: <%= alert %>
+	<div class="alert alert-danger" role="alert">
+		<%= alert %>
+	</div>
 <% end %>
 
 <% if notice %>
-	Success: <%= notice %>
+	<div class="alert alert-success" role="alert">
+		<%= notice %>
+	</div>
 <% end %>
