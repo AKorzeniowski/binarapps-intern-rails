@@ -1,4 +1,4 @@
-<h1>List of all authors</h1>
+<%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "List of all authors", :lead => "Here you can view authors. And add them. And edit. And delete. And whatnot." } %>
 
 <div class="container authors">
 	<% @authors.each do |author| %>
