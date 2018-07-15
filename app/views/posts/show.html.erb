@@ -8,11 +8,15 @@
 		<%= "#{@post.content}" %>
 	</p>
 	<hr> 
-	<h2>Comments</h2>
-	<% Comment.find_for_post(@post).each do |comment| %>
-	<p><%= "#{comment.content}" %></p>
-	<em><p><%= "-#{comment.commenter_name}, #{comment.created_at}" %></em>
-	<% end %>
+	<% if Comment.find_for_post(@post).any? %>
+		<h2>Comments</h2>
+		<% Comment.find_for_post(@post).each do |comment| %>
+		<p><%= "#{comment.content}" %></p>
+		<em><p><%= "-#{comment.commenter_name}, #{comment.created_at}" %></em>
+		<% end %>
+	<% else %>
+			<h2>No comments yet :(</h2>
+	<% end %>	
 	<h2>Add a comment</h2>
 	<%= render 'comments/form' %>
 	<hr>
