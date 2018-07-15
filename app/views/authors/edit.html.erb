@@ -1,11 +1,16 @@
-<h1>Edit author</h1>
+<%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "Editing author – #{@author.fullname}", :lead => "I hope you know what you're doing." } %>
 
-<% if @author.errors.any? %>
-<ul>
-	<% @author.errors.full_messages.each do |msg| %>
-		<li><%= msg %></li>
+<div class="container">
+	<% if @author.errors.any? %>
+	<div class="alert alert-danger" role="alert">
+		Oops! I hate to admit it, but you did something wrong. Apparently:
+		<ul>
+			<% @author.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+		</ul>
+	</div>
 	<% end %>
-</ul>
-<% end %>
 
-<%= render 'form' %>
+	<%= render 'form' %>
+</div>

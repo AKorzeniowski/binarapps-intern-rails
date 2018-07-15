@@ -10,9 +10,9 @@
 	<% @authors.each do |author| %>
 		<%= render('author', author: author) %>
 	<% end %>
-	<hr>
 </div>
 <div class="container">
+	<hr>
 	<h2>Add a new author</h2>
 	<%= form_for @author, remote: true do |f| %>
   	<div class="form-group">
