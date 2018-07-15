@@ -1,6 +1,8 @@
-<h1><%= "#{@post.title}" %></h1>
-<hr>
-<p>
+<%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "#{@post.title}", :lead => "Enjoy this post." } %>
+
+<div class="container">
+	<p>
+
 	Content:
 	<%= "#{@post.content}" %>
 	<hr>
@@ -12,6 +14,14 @@
     <hr>
 	Updated at:
 	<%= "#{@post.updated_at}" %>
+		
+	</p>
+
+	<%= link_to '🔙 Back to posts', posts_path , class: 'btn btn-secondary', role: 'button'  %>
+	<%= link_to "✏️ Edit this post", edit_post_path(id: @post.id), class: 'btn btn-primary', role: 'button'  %>  
+	<%= link_to "🗑 Delete this post", post_path(id: @post.id), method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-danger', role: 'button'  %> 
+</div>
+<p>
 </p>
 <h2>Comments</h2>
 <% Comment.find_for_post(@post).each do |comment| %>
@@ -20,7 +30,3 @@
 <% end %>
 <h2>Add a comment</h2>
 <%= render 'comments/form' %>
-
-<%= link_to "Edit this post", edit_post_path(id: @post.id) %> | 
-<%= link_to "Delete this post", post_path(id: @post.id), method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%= link_to 'Back to posts', posts_path %>
