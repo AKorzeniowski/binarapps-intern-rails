@@ -2,4 +2,9 @@
 <div class="container">
 	<h2>Statistics</h2>
 	<p>Our <%= "#{Author.count}" %> authors have written <%= "#{Post.count}" %> posts, which have been commented on <%= "#{Comment.count}" %> times.</p>
+	<h2>Random post</h2>
+	<% post = Post.get_random %>
+	<h4><%= post.title %></h4>
+	<p><%= post.content %></p>
+	<%= link_to "Read more", post_path(post.id) %>
 </div>
