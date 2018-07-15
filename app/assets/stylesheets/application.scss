@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+.items-container {
+	&__head {
+		font-weight: bold;
+		text-transform: capitalize;
+	}
+
+	&__item {
+		margin: 0.3em 0;
+		.btn {
+			font-variant: small-caps;
+		}
+	}
+}

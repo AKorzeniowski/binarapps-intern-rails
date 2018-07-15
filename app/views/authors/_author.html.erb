@@ -1,5 +1,5 @@
-<div class="row align-items-center" data-author-id="<%= author.id %>">
+<div class="row align-items-center items-container__item" data-author-id="<%= author.id %>">
 	<div class="col-sm-12 col-md-8"><%= link_to "#{author.fullname}", author_path(id: author.id) %></div>
-	<div class="col-sm-12 col-md-2"><%= link_to "edit",  edit_author_path(id: author.id), class: 'btn btn-primary', role: 'button' %></div>
-	<div class="col-sm-12 col-md-2"><%= link_to "delete", author_path(id: author.id), class: 'btn btn-danger', remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+	<div class="col-sm-12 col-md-2"><%= link_to "Edit",  edit_author_path(id: author.id), class: 'btn btn-primary', role: 'button' %></div>
+	<div class="col-sm-12 col-md-2"><%= link_to "Delete", author_path(id: author.id), class: 'btn btn-danger', remote: true, method: :delete, data: { confirm: "Do you really want to delete #{author.fullname}?" } %></div>
 </div>

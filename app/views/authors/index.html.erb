@@ -1,11 +1,17 @@
 <%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "List of all authors", :lead => "Here you can view authors. And add them. And edit. And delete. And whatnot." } %>
 
 <div class="container authors">
+	<div class="row items-container__head">
+		<div class="col-sm-12 col-md-8">Full name</div>
+		<div class="col-sm-12 col-md-2">Edit</div>
+		<div class="col-sm-12 col-md-2">Delete</div>
+	</div>
+	<hr>
 	<% @authors.each do |author| %>
 		<%= render('author', author: author) %>
 	<% end %>
+	<hr>
 </div>
-<hr>
 <div class="container">
 	<h2>Add a new author</h2>
 	<%= form_for @author, remote: true do |f| %>
