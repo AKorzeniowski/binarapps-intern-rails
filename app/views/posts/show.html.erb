@@ -2,31 +2,21 @@
 
 <div class="container">
 	<p>
-
-	Content:
-	<%= "#{@post.content}" %>
-	<hr>
-	Author:
-	<%= link_to "#{Author.find(@post.author_id).fullname}", author_path(Author.find(@post.author_id).id) %>
-	<hr>
-	Created at:
-	<%= "#{@post.created_at}" %>
-    <hr>
-	Updated at:
-	<%= "#{@post.updated_at}" %>
-		
+	On 	<%= "#{@post.created_at.strftime("%A, %dth of %B %Y")}" %>, <%= link_to "#{Author.find(@post.author_id).fullname}", author_path(Author.find(@post.author_id).id) %> wrote:
 	</p>
-
+	<p>
+		<%= "#{@post.content}" %>
+	</p>
+	<hr> 
+	<h2>Comments</h2>
+	<% Comment.find_for_post(@post).each do |comment| %>
+	<p><%= "#{comment.content}" %></p>
+	<em><p><%= "-#{comment.commenter_name}, #{comment.created_at}" %></em>
+	<% end %>
+	<h2>Add a comment</h2>
+	<%= render 'comments/form' %>
+	<hr>
 	<%= link_to '🔙 Back to posts', posts_path , class: 'btn btn-secondary', role: 'button'  %>
 	<%= link_to "✏️ Edit this post", edit_post_path(id: @post.id), class: 'btn btn-primary', role: 'button'  %>  
 	<%= link_to "🗑 Delete this post", post_path(id: @post.id), method: :delete, data: { confirm: 'Are you sure ?' }, class: 'btn btn-danger', role: 'button'  %> 
-</div>
-<p>
 </p>
-<h2>Comments</h2>
-<% Comment.find_for_post(@post).each do |comment| %>
-<p><%= "#{comment.content}" %></p>
-<em><p><%= "-#{comment.commenter_name}, #{comment.created_at}" %></em>
-<% end %>
-<h2>Add a comment</h2>
-<%= render 'comments/form' %>
