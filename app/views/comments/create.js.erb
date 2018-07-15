@@ -1,1 +1,5 @@
-$('.comments').append('<%= escape_javascript render('comment', comment: @comment) %>');
+<% if @comment.persisted? %>
+	$('.comments').append('<%= escape_javascript render('comment', comment: @comment) %>');
+<% else %>
+  alert('<%= j @comment.errors.full_messages.join(', ') %>');
+<% end %>
