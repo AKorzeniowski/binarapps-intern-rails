@@ -11,8 +11,7 @@
 	<% if Comment.find_for_post(@post).any? %>
 		<h2>Comments</h2>
 		<% Comment.find_for_post(@post).each do |comment| %>
-		<p><%= "#{comment.content}" %></p>
-		<em><p><%= "-#{comment.commenter_name}, #{comment.created_at}" %></em>
+			<%= render('comments/comment', comment: comment) %>
 		<% end %>
 	<% else %>
 			<h2>No comments yet :(</h2>
