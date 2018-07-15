@@ -9,14 +9,19 @@
 	</p>
 	<hr> 
 	<% if Comment.find_for_post(@post).any? %>
-		<h2>Comments</h2>
-		<% Comment.find_for_post(@post).each do |comment| %>
-			<%= render('comments/comment', comment: comment) %>
-		<% end %>
+		<h2 class="comments-heading">Comments</h2>
+		<div class="comments">
+			<% Comment.find_for_post(@post).each do |comment| %>
+				<%= render('comments/comment', comment: comment) %>
+			<% end %>
+		</div>
 	<% else %>
-			<h2>No comments yet :(</h2>
-	<% end %>	
+			<h2 class="comments-heading--none">No comments yet :(</h2>
+			<div class="comments"></div>
+	<% end %>
 	<h2>Add a comment</h2>
+	<div class="alert" role="alert" style="display: none;">
+	</div>
 	<%= render 'comments/form' %>
 	<hr>
 	<%= link_to '🔙 Back to posts', posts_path , class: 'btn btn-secondary', role: 'button'  %>
