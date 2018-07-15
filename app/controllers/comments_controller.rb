@@ -15,9 +15,9 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id]).destroy
     if request.format.html?
       if @comment.destroy
-        redirect_to authors_path, notice: 'Author was destroyed'
+        redirect_to authors_path, notice: 'Comment was destroyed'
       else
-        redirect_to authors_path, alert: 'Author could not be destroyed'
+        redirect_to authors_path, alert: 'Comment could not be destroyed'
       end
     end
   end
