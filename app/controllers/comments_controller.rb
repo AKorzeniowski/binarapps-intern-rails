@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   def create 
-    @comment = Comment.new(comment_params)
+    @comment = Comment.create(comment_params)
     post = Post.find(@comment.post_id)
     if request.format.html?
       if @comment.save
