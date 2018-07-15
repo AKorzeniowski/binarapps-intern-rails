@@ -1,7 +1,9 @@
 <% if @comment.persisted? %>
 	$('.comments').append('<%= escape_javascript render('comment', comment: @comment) %>')
+	$('.new-comment-alert').hide();
 <% else %>
 	$('.new-comment-alert').html("Oops! I hate to admit it, but you did something wrong. Apparently: <%= @comment.errors.full_messages.join(', ') %>")
+	$('.new-comment-alert').addClass("alert-danger")
 	$('.new-comment-alert').show();
 <% end %>
 $('.new_comment').find('input[type="text"], textarea').val('')
