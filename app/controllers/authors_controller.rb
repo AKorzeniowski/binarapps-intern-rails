@@ -14,11 +14,13 @@ class AuthorsController < ApplicationController
 
   def create 
     @author = Author.create(author_params)
-    # if @author.save
-    #   redirect_to authors_path, notice: 'Author was created'
-    # else
-    #   render :new
-    # end
+    if request.format.html?
+      if @author.save
+        redirect_to authors_path, notice: 'Author was created'
+      else
+        render :new
+      end
+    end
   end
   
   def edit 
@@ -36,11 +38,13 @@ class AuthorsController < ApplicationController
 
   def destroy
     @author = Author.find(params[:id]).destroy
-    # if author.destroy
-    #   redirect_to authors_path, notice: 'Author was destroyed'
-    # else
-    #   redirect_to authors_path, alert: 'Author could not be destroyed'
-    # end
+    if request.format.html?
+      if @author.destroy
+        redirect_to authors_path, notice: 'Author was destroyed'
+      else
+        redirect_to authors_path, alert: 'Author could not be destroyed'
+      end
+    end
   end
 
   private
