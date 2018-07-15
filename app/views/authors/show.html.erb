@@ -1,23 +1,22 @@
-<h1><%= "#{@author.fullname}" %></h1>
-<hr>
-<p>
-	Name:
-	<%= "#{@author.name}" %>
-	<hr>
-	Surname:
-	<%= "#{@author.surname}" %>
-	<hr>
-	Age:
-	<%= "#{@author.age}" %>
-	<hr>
-	Posts:
-	<ul>
-		<% @author.posts.each do |post| %>
-			<li><%= link_to post.title, post_path(id: post.id) %></li>
-		<% end %>
-	</ul>
-</p>
+<%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "Viewing author - #{@author.fullname}", :lead => "Take a look at #{@author.name}'s details and posts." } %>
 
-<%= link_to "Edit this author", edit_author_path(id: @author.id) %> | 
-<%= link_to "Delete this author", author_path(id: @author.id), method: :delete, data: { confirm: 'Are you sure?' } %> | 
-<%= link_to 'Back to authors', authors_path %>
+<div class="container">
+	<p>
+		My first name is <strong><%= "#{@author.name}" %></strong> and <strong><%= "#{@author.surname}" %></strong> is my surname. I am <strong><%= "#{@author.age}" %></strong> years old.
+		<br>
+		<% if @author.posts.any? %>
+			I have written the following posts:
+			<ul>
+				<% @author.posts.each do |post| %>
+					<li><%= link_to post.title, post_path(id: post.id) %></li>
+				<% end %>
+			</ul>
+		<% else %>
+			I haven't written any posts yet. :(
+		<% end %>
+	</p>
+
+	<%= link_to '🔙 Back to authors', authors_path, class: 'btn btn-secondary', role: 'button'  %>
+	<%= link_to "✏️ Edit this author", edit_author_path(id: @author.id), class: 'btn btn-primary', role: 'button'  %>  
+	<%= link_to "🗑 Delete this author", author_path(id: @author.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger', role: 'button'  %> 
+</div>
