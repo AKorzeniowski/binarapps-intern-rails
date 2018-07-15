@@ -1,14 +1,18 @@
-<h1>List of all posts</h1>
+<%= render :partial => 'layouts/partials/jumbotron', :locals => { :heading => "List of all posts", :lead => "Here you can view posts. And add them. And edit. And delete. And whatnot. Just like authors on the other page. But with posts. So, yeah. " } %>
 
-<ul>
+<div class="container posts">
+	<div class="row items-container__head">
+		<div class="col-sm-12 col-md-5">Title</div>
+		<div class="col-sm-12 col-md-1">Comments</div>
+		<div class="col-sm-12 col-md-2">Created</div>
+		<div class="col-sm-12 col-md-2">Last update</div>
+		<div class="col-sm-12 col-md-1">Edit</div>
+		<div class="col-sm-12 col-md-1">Delete</div>
+	</div>
+	<hr>
 	<% @posts.each do |post| %>
-	<li>
-		<%= link_to "#{post.title}", post_path(id: post.id) %>
-		<%= link_to "edit", edit_post_path(id: post.id) %>
-		<%= link_to "delete", post_path(id: post.id), method: :delete, data: { confirm: 'Are you sure?' } %>
-	</li>
+		<%= render('post', post: post) %>
 	<% end %>
-</ul>
-
-<hr>
-<%= link_to "Add new post", new_post_path %>
+	<hr>
+	<%= link_to "Add new post", new_post_path %>
+</div>
