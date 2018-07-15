@@ -3,3 +3,4 @@
 <% else %>
   alert('<%= j @comment.errors.full_messages.join(', ') %>');
 <% end %>
+$('.new_comment').find('input[type="text"], textarea').val('')
