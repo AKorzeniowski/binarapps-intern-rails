@@ -1,14 +1,14 @@
-<%= form_for @comment do |f| %>
+<%= form_for @comment, remote: true do |f| %>
 	<div class="form-group">
-	<%= f.label :commenter_name %>
-	<%= f.text_field :commenter_name, class: "form-control", placeholder: "Enter your name" %>
+		<%= f.label :commenter_name %>
+		<%= f.text_field :commenter_name, class: "form-control", placeholder: "Enter your name" %>
 	</div>
 	<div class="form-group">
-	<%= f.label :content %>
-	<%= f.text_area :content, class: "form-control", placeholder: "Write what comes to your mind" %>
+		<%= f.label :content %>
+		<%= f.text_area :content, class: "form-control", placeholder: "Write what comes to your mind" %>
 	</div>
 	<div class="form-group">
-	<%= f.hidden_field(:post_id, value: @post.id) %>
-	<%= f.submit 'Add a comment', class: "btn btn-primary" %>
+		<%= f.hidden_field(:post_id, value: @post.id) %>
+		<%= f.submit 'Add a comment', class: "btn btn-primary" %>
 	</div>
 <% end %>
